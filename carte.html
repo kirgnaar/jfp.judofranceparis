@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte des Dojos · JFP | Judo France Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <style>
+    #map { height: 600px; width: 100%; border: 1px solid var(--line); border-radius: 5px; margin-top: 2rem; }
+    .leaflet-popup-content-wrapper { background: var(--dark2); color: var(--text); border: 1px solid var(--line); }
+    .leaflet-popup-tip { background: var(--dark2); }
+    .map-title { font-family: 'Bebas Neue'; color: var(--red); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .map-addr { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <span class="logo-jfp">JFP</span>
+    <span class="logo-sep"></span>
+    <span class="logo-sub"><strong>Judo France Paris</strong>Club n°1 à Paris · Depuis 1992</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Le Club ▾</a>
+      <div class="dropdown-content">
+        <a href="horaires.html">Horaires</a>
+        <a href="dojos.html">Nos Dojos</a>
+        <a href="carte.html" class="active">Carte Interactive</a>
+        <a href="disciplines.html">Disciplines</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Adhérents ▾</a>
+      <div class="dropdown-content">
+        <a href="espace-membre.html">Espace Membre</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="inscription.html">Inscription</a>
+      </div>
+    </li>
+  </ul>
+  <a href="inscription.html" class="nav-btn">S'inscrire</a>
+</nav>
+
+<section class="section" style="padding-top: 10rem;">
+  <div class="sh rev">
+    <div class="sh-left">
+      <div class="sh-num">Géolocalisation — 11 Sites</div>
+      <div class="sh-title">Carte des<br>Dojos.</div>
+    </div>
+    <div class="sh-right">Visualisez instantanément le dojo le plus proche de chez vous ou de votre lieu de travail parmi nos 11 implantations.</div>
+  </div>
+
+  <div id="map" class="rev"></div>
+</section>
+
+<footer>
+  <span class="footer-logo">JFP · Judo France Paris</span>
+  <p class="footer-copy">© 2025-2026 Judo France Paris</p>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  const map = L.map('map').setView([48.8566, 2.3522], 12);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map);
+
+  const dojos = [
+    { name: "Neuve-Saint-Pierre", lat: 48.8535703, lon: 2.3630811, addr: "15 rue Neuve-Saint-Pierre, 75004 Paris" },
+    { name: "Ilot Saint-Germain", lat: 48.8590314, lon: 2.3206628, addr: "10 rue Saint-Dominique, 75007 Paris" },
+    { name: "Gymnase Masseran", lat: 48.8487603, lon: 2.3139122, addr: "6 rue Masseran, 75007 Paris" },
+    { name: "Tour des Dames", lat: 48.877902, lon: 2.332769, addr: "14-18 rue de la Tour des Dames, 75009 Paris" },
+    { name: "Lycée P. Valéry", lat: 48.8400, lon: 2.4000, addr: "15 rue de la Nlle Calédonie, 75012 Paris" },
+    { name: "Univ. Paris Diderot", lat: 48.8271004, lon: 2.3817249, addr: "9 rue de la Croix-Jarry, 75013 Paris" },
+    { name: "Vigée Lebrun", lat: 48.8389194, lon: 2.3106592, addr: "11-17 rue Vigée Lebrun, 75015 Paris" },
+    { name: "Gymnase de la Plaine", lat: 48.8279727, lon: 2.2935546, addr: "13 rue du Général Guillaumat, 75015 Paris" },
+    { name: "Charles Rigoulot", lat: 48.8267746, lon: 2.3004822, addr: "18 av. de la Porte Brancion, 75015 Paris" },
+    { name: "Salle Pelleport", lat: 48.8729086, lon: 2.398007, addr: "162 rue Pelleport, 75020 Paris" },
+    { name: "Dojo Louis Lumière", lat: 48.859198, lon: 2.411644, addr: "30 rue Louis Lumière, 75020 Paris" }
+  ];
+
+  dojos.forEach(dojo => {
+    L.marker([dojo.lat, dojo.lon]).addTo(map)
+      .bindPopup(`
+        <div class="map-title">${dojo.name}</div>
+        <div class="map-addr">${dojo.addr}</div>
+        <a href="horaires.html" style="color:var(--red); font-size:0.7rem; text-decoration:none; display:block; margin-top:5px;">Voir les horaires →</a>
+      `);
+  });
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>

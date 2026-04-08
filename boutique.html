@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Officielle · JFP | Judo France Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .product-card { background: var(--dark2); border: 1px solid var(--line); overflow: hidden; transition: transform 0.3s ease; }
+    .product-card:hover { transform: translateY(-10px); }
+    .product-img { height: 250px; background: var(--warm); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 2rem; color: rgba(255,255,255,0.05); }
+    .product-info { padding: 1.5rem; }
+    .product-name { font-family: 'Bebas Neue'; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .product-price { color: var(--red); font-weight: 700; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <span class="logo-jfp">JFP</span>
+    <span class="logo-sep"></span>
+    <span class="logo-sub"><strong>Judo France Paris</strong>Club n°1 à Paris · Depuis 1992</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Le Club ▾</a>
+      <div class="dropdown-content">
+        <a href="horaires.html">Horaires</a>
+        <a href="dojos.html">Nos Dojos</a>
+        <a href="carte.html">Carte Interactive</a>
+        <a href="disciplines.html">Disciplines</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Adhérents ▾</a>
+      <div class="dropdown-content">
+        <a href="espace-membre.html">Espace Membre</a>
+        <a href="boutique.html" class="active">Boutique</a>
+        <a href="inscription.html">Inscription</a>
+      </div>
+    </li>
+  </ul>
+  <a href="inscription.html" class="nav-btn">S'inscrire</a>
+</nav>
+
+<section class="section" style="padding-top: 10rem;">
+  <div class="sh rev">
+    <div class="sh-left">
+      <div class="sh-num">Équipement — Boutique JFP</div>
+      <div class="sh-title">Portez nos<br>Couleurs.</div>
+    </div>
+    <div class="sh-right">Kimonos officiels avec écusson brodé, vêtements de sport et accessoires exclusifs Judo France Paris.</div>
+  </div>
+
+  <div class="shop-grid rev">
+    <div class="product-card">
+      <div class="product-img">KIMONO ADULTE</div>
+      <div class="product-info">
+        <div class="product-name">Kimono Compétition (Adidas)</div>
+        <div class="product-price">85,00 €</div>
+        <a href="#" class="btn-r" style="display:block; text-align:center; padding: 0.6rem;">Ajouter au panier</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">KIMONO ENFANT</div>
+      <div class="product-info">
+        <div class="product-name">Kimono Éveil/Enfant</div>
+        <div class="product-price">45,00 €</div>
+        <a href="#" class="btn-r" style="display:block; text-align:center; padding: 0.6rem;">Ajouter au panier</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">SWEAT JFP</div>
+      <div class="product-info">
+        <div class="product-name">Sweat à capuche Officiel</div>
+        <div class="product-price">40,00 €</div>
+        <a href="#" class="btn-r" style="display:block; text-align:center; padding: 0.6rem;">Ajouter au panier</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">ÉCUSSON JFP</div>
+      <div class="product-info">
+        <div class="product-name">Écusson Brodé Club</div>
+        <div class="product-price">8,00 €</div>
+        <a href="#" class="btn-r" style="display:block; text-align:center; padding: 0.6rem;">Ajouter au panier</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">JFP · Judo France Paris</span>
+  <p class="footer-copy">© 2025-2026 Judo France Paris</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

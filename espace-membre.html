@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Adhérent · JFP | Judo France Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .member-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; }
+    .sidebar { background: var(--warm); border: 1px solid var(--line); padding: 2rem; border-radius: 5px; height: fit-content; }
+    .sidebar h3 { font-family: 'Bebas Neue'; margin-bottom: 1.5rem; color: var(--red); }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin-bottom: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 0.5rem; }
+    .sidebar a { text-decoration: none; color: var(--muted); font-size: 0.85rem; transition: color 0.2s; }
+    .sidebar a:hover { color: var(--text); }
+    .content-card { background: var(--dark2); border: 1px solid var(--line); padding: 2.5rem; border-radius: 5px; }
+    .doc-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--warm); border: 1px solid var(--line); margin-bottom: 1rem; }
+    .doc-name { font-size: 0.9rem; font-weight: 500; }
+    .download-link { color: var(--red); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <span class="logo-jfp">JFP</span>
+    <span class="logo-sep"></span>
+    <span class="logo-sub"><strong>Judo France Paris</strong>Club n°1 à Paris · Depuis 1992</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Le Club ▾</a>
+      <div class="dropdown-content">
+        <a href="horaires.html">Horaires</a>
+        <a href="dojos.html">Nos Dojos</a>
+        <a href="carte.html">Carte Interactive</a>
+        <a href="disciplines.html">Disciplines</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Adhérents ▾</a>
+      <div class="dropdown-content">
+        <a href="espace-membre.html" class="active">Espace Membre</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="inscription.html">Inscription</a>
+      </div>
+    </li>
+  </ul>
+  <a href="inscription.html" class="nav-btn">S'inscrire</a>
+</nav>
+
+<section class="section" style="padding-top: 10rem;">
+  <div class="sh rev">
+    <div class="sh-left">
+      <div class="sh-num">Espace — Adhérent</div>
+      <div class="sh-title">Mon Dossier<br>Numérique.</div>
+    </div>
+    <div class="sh-right">Gérez votre abonnement, téléchargez vos documents administratifs et suivez votre progression technique.</div>
+  </div>
+
+  <div class="member-grid rev">
+    <div class="sidebar">
+      <h3>Tableau de bord</h3>
+      <ul>
+        <li><a href="#">Mon Profil</a></li>
+        <li><a href="#">Mes Documents</a></li>
+        <li><a href="#">Passages de Grades</a></li>
+        <li><a href="#">Cotisations</a></li>
+        <li><a href="#" style="color:var(--red);">Se déconnecter</a></li>
+      </ul>
+    </div>
+
+    <div class="content-card">
+      <h3 style="font-family:'Bebas Neue'; margin-bottom: 1.5rem;">Documents Administratifs</h3>
+      
+      <div class="doc-item">
+        <div class="doc-name">Certificat Médical Type (Vierge)</div>
+        <a href="#" class="download-link">Télécharger PDF</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-name">Règlement Intérieur JFP 2025-2026</div>
+        <a href="#" class="download-link">Télécharger PDF</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-name">Attestation de Licence FFJDA</div>
+        <a href="#" class="download-link">Télécharger PDF</a>
+      </div>
+
+      <h3 style="font-family:'Bebas Neue'; margin-bottom: 1.5rem; margin-top: 3rem;">Ma Progression</h3>
+      <div class="hstat" style="border-left-color: #2196f3;">
+        <span class="hstat-n" style="font-size: 1.8rem;">Ceinture Bleue</span>
+        <span class="hstat-l">Obtenue en Juin 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">JFP · Judo France Paris</span>
+  <p class="footer-copy">© 2025-2026 Judo France Paris</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
