@@ -1,8 +1,12 @@
 :root {
-    --primary-color: #d32f2f;
-    --secondary-color: #1976d2;
+    --primary-color: #d32f2f; /* Rouge Judo */
+    --secondary-color: #1976d2; /* Bleu France */
+    --dark-color: #1a1a1a;
+    --light-color: #f8f9fa;
     --text-color: #333;
-    --bg-color: #f4f4f4;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -12,16 +16,17 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
 }
 
+/* Header & Navigation */
 header {
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 1rem 5%;
+    background: var(--white);
+    box-shadow: var(--shadow);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -31,84 +36,229 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
-    font-weight: 700;
     font-size: 1.5rem;
+    font-weight: 800;
     color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: -1px;
 }
 
-nav ul {
+.nav-links {
     display: flex;
     list-style: none;
 }
 
-nav ul li {
-    margin-left: 20px;
+.nav-links li {
+    margin-left: 1.5rem;
 }
 
-nav ul li a {
+.nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* Responsive Menu */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: var(--white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    }
+    .nav-links li {
+        margin: 2rem 0;
+    }
+    .burger {
+        display: block;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+/* Common Components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
 }
 
 .btn {
-    padding: 0.5rem 1.5rem;
-    border-radius: 5px;
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
-    transition: 0.3s;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
 }
 
 .btn-primary {
     background: var(--primary-color);
-    color: #fff;
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: #b71c1c;
+    transform: translateY(-2px);
 }
 
 .btn-secondary {
     background: var(--secondary-color);
-    color: #fff;
+    color: var(--white);
 }
 
-#hero {
-    height: 60vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
+/* Cards Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-#stats {
-    display: flex;
-    justify-content: space-around;
-    padding: 4rem 10%;
-    background: var(--bg-color);
-}
-
-.stat-card {
-    text-align: center;
-}
-
-.stat-card h2 {
-    font-size: 3rem;
-    color: var(--primary-color);
-}
-
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
+.card {
+    background: var(--white);
     padding: 2rem;
-    margin-top: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    background: var(--dark-color);
+    color: var(--white);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--white);
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+/* Accessibility for Para-judo */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
 }

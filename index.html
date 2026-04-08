@@ -5,51 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JFP - Judo France Paris | Club N°1 à Paris</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">JFP.JudoFranceParis</div>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#dojos">Nos 11 Dojos</a></li>
-                <li><a href="#disciplines">Disciplines</a></li>
-                <li><a href="#inscription" class="btn">S'inscrire 2026</a></li>
+            <a href="index.html" class="logo">JFP.JUDOFRANCEPARIS</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="dojos.html">Nos 11 Dojos</a></li>
+                <li><a href="disciplines.html">Disciplines</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Le Judo au Cœur de Paris</h1>
-                <p>Rejoignez le club N°1 avec plus de 750 passionnés. Labellisé Or & Para Judo.</p>
-                <div class="cta-group">
-                    <a href="#inscription" class="btn btn-primary">Inscription en ligne</a>
-                    <a href="#dojos" class="btn btn-secondary">Trouver un dojo</a>
-                </div>
-            </div>
-        </section>
+    <section class="hero">
+        <h1>Le Judo au Cœur de Paris</h1>
+        <p>Rejoignez le club N°1 avec plus de 750 passionnés. Labellisé Or & Para Judo par la FFJDA.</p>
+        <div class="cta-group">
+            <a href="inscription.html" class="btn btn-primary">Inscription 2026</a>
+            <a href="dojos.html" class="btn btn-secondary">Trouver un dojo</a>
+        </div>
+    </section>
 
-        <section id="stats">
-            <div class="stat-card">
-                <h2>11</h2>
-                <p>Dojos à Paris</p>
+    <main class="container">
+        <h2 class="section-title">Pourquoi nous rejoindre ?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Expertise</h3>
+                <p>Des professeurs diplômés d'État et des experts comme Percy Kunsa pour le JJB.</p>
             </div>
-            <div class="stat-card">
-                <h2>750+</h2>
-                <p>Adhérents</p>
+            <div class="card">
+                <h3>Proximité</h3>
+                <p>11 dojos répartis dans tout Paris pour pratiquer près de chez vous ou de votre travail.</p>
             </div>
-            <div class="stat-card">
-                <h2>Or</h2>
-                <p>Label Fédéral</p>
+            <div class="card">
+                <h3>Inclusion</h3>
+                <p>Labellisé "Para Judo", nous accueillons tous les publics dans une ambiance conviviale.</p>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Judo France Paris. Tous droits réservés.</p>
+        <div class="footer-content">
+            <p><strong>JUDO FRANCE PARIS</strong> - Club Affilié FFJDA</p>
+            <p>&copy; 2026 JFP. Tous droits réservés.</p>
+        </div>
     </footer>
 
     <script src="js/app.js"></script>
