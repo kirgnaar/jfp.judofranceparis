@@ -19,9 +19,20 @@ nav.scrolled { background: rgba(9,9,9,.97); border-color: var(--line); }
 .logo-sep { width: 1px; height: 28px; background: var(--line); }
 .logo-sub { font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); line-height: 1.7; }
 .logo-sub strong { display: block; color: var(--text); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
+
+/* DROPDOWN */
+.dropdown { position: relative; display: inline-block; }
+.dropbtn { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+.dropdown-content { display: none; position: absolute; background-color: var(--dark2); min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); z-index: 1000; top: 100%; left: 0; border: 1px solid var(--line); margin-top: 1rem; }
+.dropdown-content a { color: var(--muted); padding: 1rem; text-decoration: none; display: block; border-bottom: 1px solid var(--line); font-size: 0.65rem; transition: background 0.2s, color 0.2s; }
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover { background-color: var(--warm); color: var(--text); }
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown:hover .dropbtn { color: var(--text); }
+
 .nav-btn { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; background: var(--red); color: #fff; padding: .55rem 1.4rem; text-decoration: none; transition: opacity .2s; }
 .nav-btn:hover { opacity: .82; }
 
