@@ -1,39 +1,39 @@
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
-
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
-
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-        });
-
-        // Burger Animation
-        burger.classList.toggle('toggle');
-    });
-}
-
-// Validation simple du formulaire d'inscription
-const handleForm = () => {
-    const form = document.querySelector('#inscription-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Merci ! Votre pré-inscription pour la saison 2026 a été envoyée. Nous vous contacterons prochainement.");
-            form.reset();
-        });
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    navSlide();
-    handleForm();
+  // Navigation scroll effect
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
+
+  // Intersection Observer for reveal animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  // Form submission feedback
+  const sendBtn = document.getElementById('sendBtn');
+  if (sendBtn) {
+    sendBtn.addEventListener('click', function() {
+      // Simulation simple d'envoi
+      const originalText = this.textContent;
+      this.textContent = '✓ Message envoyé !';
+      this.style.background = '#1a5c1a';
+      setTimeout(() => {
+        this.textContent = originalText;
+        this.style.background = '';
+      }, 3000);
+    });
+  }
+
+  // Mobile navigation (optional extension if needed)
+  console.log("JFP.JudoFranceParis 2026 initialized.");
 });
