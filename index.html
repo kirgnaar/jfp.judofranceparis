@@ -21,8 +21,9 @@
     <span class="logo-sep"></span>
     <span class="logo-sub"><strong>Judo France Paris</strong>Club n°1 à Paris · Depuis 1992</span>
   </a>
+  
   <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html" class="active">Accueil</a></li>
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">Le Club ▾</a>
       <div class="dropdown-content">
@@ -40,7 +41,16 @@
         <a href="inscription.html">Inscription</a>
       </div>
     </li>
+    <!-- Mobile-only links if needed -->
+    <li class="mobile-only"><a href="inscription.html" class="nav-btn-mobile">S'inscrire</a></li>
   </ul>
+
+  <div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <a href="inscription.html" class="nav-btn">S'inscrire</a>
 </nav>
 
@@ -151,10 +161,10 @@
 </section>
 
 <!-- ACTUALITÉS -->
-<section id="news" class="section">
+<section id="news" class="section section-alt">
   <div class="sh rev">
     <div class="sh-left">
-      <div class="sh-num">04 — Actualités</div>
+      <div class="sh-num">03 — Actualités</div>
       <div class="sh-title">Vie du<br>Club.</div>
     </div>
     <div class="sh-right">Restez informé des derniers résultats de compétition, des stages et des événements à venir.</div>
@@ -179,10 +189,10 @@
 </section>
 
 <!-- PALMARES -->
-<section id="palmares" class="section section-alt">
+<section id="palmares" class="section">
   <div class="sh rev">
     <div class="sh-left">
-      <div class="sh-num">03 — Palmarès</div>
+      <div class="sh-num">04 — Palmarès</div>
       <div class="sh-title">Sur les<br>podiums.</div>
     </div>
     <div class="sh-right">Club n°1 au classement national Minimes. De nombreuses médailles aux Championnats de France chaque saison.</div>
@@ -196,7 +206,7 @@
 </section>
 
 <!-- SITES -->
-<section id="sites" class="section">
+<section id="sites" class="section section-alt">
   <div class="sh rev">
     <div class="sh-left">
       <div class="sh-num">05 — Nos 11 Dojos</div>
@@ -220,7 +230,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section section-alt">
+<section id="contact" class="section">
   <div class="sh rev">
     <div class="sh-left">
       <div class="sh-num">06 — Contact</div>
@@ -251,12 +261,17 @@
           <label>Dojo & Discipline</label>
           <select>
             <option value="">Choisir un site…</option>
-            <option>Paris 4 - Judo</option>
-            <option>Paris 7 - Judo / JJB</option>
-            <option>Paris 9 - Judo / Taïso</option>
-            <option>Paris 12 - Judo / Taïso</option>
-            <option>Paris 15 - Judo</option>
-            <option>Paris 20 - Judo</option>
+            <option>Paris 4 - Neuve-Saint-Pierre</option>
+            <option>Paris 7 - Invalides (JJB / Judo)</option>
+            <option>Paris 7 - Masseran</option>
+            <option>Paris 9 - Tour des Dames</option>
+            <option>Paris 12 - Lycée P. Valéry</option>
+            <option>Paris 13 - Univ. Paris Diderot</option>
+            <option>Paris 15 - Vigée Lebrun</option>
+            <option>Paris 15 - La Plaine</option>
+            <option>Paris 15 - Brancion</option>
+            <option>Paris 20 - Pelleport</option>
+            <option>Paris 20 - Louis Lumière</option>
           </select>
         </div>
         <button class="submit-btn" id="sendBtn">Envoyer ma demande</button>

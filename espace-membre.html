@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .member-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; }
+    .member-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media(min-width: 961px) { .member-grid { grid-template-columns: 1fr 2fr; } }
     .sidebar { background: var(--warm); border: 1px solid var(--line); padding: 2rem; border-radius: 5px; height: fit-content; }
     .sidebar h3 { font-family: 'Bebas Neue'; margin-bottom: 1.5rem; color: var(--red); }
     .sidebar ul { list-style: none; }
@@ -41,7 +42,7 @@
         <a href="disciplines.html">Disciplines</a>
       </div>
     </li>
-    <li class="dropdown">
+    <li class="dropdown active">
       <a href="javascript:void(0)" class="dropbtn">Adhérents ▾</a>
       <div class="dropdown-content">
         <a href="espace-membre.html" class="active">Espace Membre</a>
@@ -50,6 +51,11 @@
       </div>
     </li>
   </ul>
+  <div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
   <a href="inscription.html" class="nav-btn">S'inscrire</a>
 </nav>
 
