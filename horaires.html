@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horaires interactifs · JFP | Judo France Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-box { background: var(--warm); border: 1px solid var(--line); padding: 2rem; margin-bottom: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .filter-item { flex: 1; min-width: 200px; }
+    .schedule-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
+    .schedule-table th { text-align: left; padding: 1rem; border-bottom: 2px solid var(--red); color: var(--muted); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; }
+    .schedule-table td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .schedule-table tr:hover { background: rgba(255,255,255,0.02); }
+    .badge-age { padding: 0.3rem 0.6rem; border-radius: 3px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+    .age-baby { background: #4caf50; color: white; }
+    .age-enfant { background: #2196f3; color: white; }
+    .age-adulte { background: #ff9800; color: white; }
+    .no-results { text-align: center; padding: 4rem; color: var(--muted); display: none; }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="logo">
+    <span class="logo-jfp">JFP</span>
+    <span class="logo-sep"></span>
+    <span class="logo-sub"><strong>Judo France Paris</strong>Club n°1 à Paris · Depuis 1992</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="horaires.html" class="active">Horaires</a></li>
+    <li><a href="dojos.html">Dojos</a></li>
+    <li><a href="disciplines.html">Disciplines</a></li>
+    <li><a href="inscription.html">Inscription</a></li>
+  </ul>
+  <a href="inscription.html" class="nav-btn">S'inscrire</a>
+</nav>
+
+<section class="section" style="padding-top: 10rem;">
+  <div class="sh rev">
+    <div class="sh-left">
+      <div class="sh-num">Planning — Saison 2025-2026</div>
+      <div class="sh-title">Trouvez votre<br>prochain cours.</div>
+    </div>
+    <div class="sh-right">Avec 11 sites, nous proposons des créneaux tous les jours de la semaine. Utilisez les filtres pour affiner votre recherche.</div>
+  </div>
+
+  <div class="filter-box rev">
+    <div class="filter-item">
+      <label class="ci-lbl">Dojo / Arrondissement</label>
+      <select id="filter-dojo" class="fg" style="margin-top:0.5rem; background: var(--dark);">
+        <option value="all">Tous les dojos</option>
+        <option value="p4">Paris 4 - Saint-Paul</option>
+        <option value="p7">Paris 7 - Invalides / Masseran</option>
+        <option value="p9">Paris 9 - Tour des Dames</option>
+        <option value="p12">Paris 12 - Porte Dorée</option>
+        <option value="p13">Paris 13 - Bibliothèque</option>
+        <option value="p15">Paris 15 - V. Lebrun / La Plaine / Rigoulot</option>
+        <option value="p20">Paris 20 - Pelleport / Lumière</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <label class="ci-lbl">Âge / Catégorie</label>
+      <select id="filter-age" class="fg" style="margin-top:0.5rem; background: var(--dark);">
+        <option value="all">Tous les âges</option>
+        <option value="baby">Baby-Judo (3-5 ans)</option>
+        <option value="enfant">Enfants (6-12 ans)</option>
+        <option value="adulte">Ados & Adultes (13+)</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <label class="ci-lbl">Discipline</label>
+      <select id="filter-disc" class="fg" style="margin-top:0.5rem; background: var(--dark);">
+        <option value="all">Toutes les disciplines</option>
+        <option value="judo">Judo</option>
+        <option value="jjb">Jujitsu Brésilien</option>
+        <option value="taiso">Taïso / Bien-être</option>
+        <option value="para">Para-Judo</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="rev">
+    <table class="schedule-table" id="schedule-table">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Horaire</th>
+          <th>Discipline</th>
+          <th>Catégorie</th>
+          <th>Lieu</th>
+        </tr>
+      </thead>
+      <tbody id="schedule-body">
+        <!-- Données injectées par JS -->
+      </tbody>
+    </table>
+    <div id="no-results" class="no-results">
+      <p>Aucun cours ne correspond à vos critères. Essayez d'élargir votre recherche.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">JFP · Judo France Paris</span>
+  <p class="footer-copy">© 2025-2026 Judo France Paris</p>
+</footer>
+
+<script>
+  const scheduleData = [
+    { jour: "Lundi", heure: "17h15 - 18h15", disc: "judo", age: "enfant", lieu: "Paris 15 - Vigée Lebrun", dojo: "p15" },
+    { jour: "Lundi", heure: "19h00 - 20h30", disc: "judo", age: "adulte", lieu: "Paris 7 - Invalides", dojo: "p7" },
+    { jour: "Mardi", heure: "18h15 - 19h15", disc: "jjb", age: "enfant", lieu: "Paris 7 - Invalides", dojo: "p7" },
+    { jour: "Mardi", heure: "20h45 - 22h15", disc: "jjb", age: "adulte", lieu: "Paris 7 - Invalides", dojo: "p7" },
+    { jour: "Mercredi", heure: "14h00 - 15h00", disc: "judo", age: "baby", lieu: "Paris 4 - Saint-Paul", dojo: "p4" },
+    { jour: "Mercredi", heure: "15h00 - 16h30", disc: "judo", age: "enfant", lieu: "Paris 4 - Saint-Paul", dojo: "p4" },
+    { jour: "Mercredi", heure: "19h15 - 20h45", disc: "jjb", age: "adulte", lieu: "Paris 7 - Invalides", dojo: "p7" },
+    { jour: "Jeudi", heure: "17h30 - 18h45", disc: "judo", age: "enfant", lieu: "Paris 20 - Pelleport", dojo: "p20" },
+    { jour: "Vendredi", heure: "18h00 - 19h30", disc: "para", age: "adulte", lieu: "Paris 15 - Rigoulot", dojo: "p15" },
+    { jour: "Vendredi", heure: "20h30 - 22h00", disc: "jjb", age: "adulte", lieu: "Paris 7 - Invalides", dojo: "p7" },
+    { jour: "Samedi", heure: "10h00 - 11h00", disc: "judo", age: "baby", lieu: "Paris 9 - Tour des Dames", dojo: "p9" },
+    { jour: "Dimanche", heure: "15h00 - 16h30", disc: "judo", age: "baby", lieu: "Paris 15 - La Plaine (Parents-Enfants)", dojo: "p15" }
+  ];
+
+  function renderTable() {
+    const dojoFilter = document.getElementById('filter-dojo').value;
+    const ageFilter = document.getElementById('filter-age').value;
+    const discFilter = document.getElementById('filter-disc').value;
+    const body = document.getElementById('schedule-body');
+    const noResults = document.getElementById('no-results');
+    
+    let filtered = scheduleData.filter(item => {
+      return (dojoFilter === 'all' || item.dojo === dojoFilter) &&
+             (ageFilter === 'all' || item.age === ageFilter) &&
+             (discFilter === 'all' || item.disc === discFilter);
+    });
+
+    body.innerHTML = '';
+    if (filtered.length === 0) {
+      noResults.style.display = 'block';
+    } else {
+      noResults.style.display = 'none';
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="color: var(--text); font-weight: 500;">${item.jour}</td>
+          <td style="color: var(--muted);">${item.heure}</td>
+          <td><span style="color: var(--red); text-transform: uppercase; font-size: 0.75rem; font-weight: 700;">${item.disc}</span></td>
+          <td><span class="badge-age age-${item.age}">${item.age}</span></td>
+          <td style="color: var(--muted); font-size: 0.8rem;">${item.lieu}</td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+  }
+
+  document.querySelectorAll('.fg').forEach(select => select.addEventListener('change', renderTable));
+  window.addEventListener('load', renderTable);
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
